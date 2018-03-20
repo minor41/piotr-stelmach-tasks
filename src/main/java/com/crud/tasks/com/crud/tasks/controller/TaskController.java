@@ -1,7 +1,6 @@
 package com.crud.tasks.com.crud.tasks.controller;
 
 import com.crud.tasks.com.crud.tasks.domain.TaskDto;
-import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,9 +10,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/task")
 public class TaskController {
-
-    public TaskController() {
-    }
 
     @RequestMapping(method = RequestMethod.GET, value = "getTasks")
     public List<TaskDto> getTasks(){
@@ -27,6 +23,7 @@ public class TaskController {
     public void deleteTask(String taskId) {
 
     }
+
     @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
     public TaskDto updateTask(TaskDto taskDto){
         return new TaskDto((long)1, "test title", "test_content");
