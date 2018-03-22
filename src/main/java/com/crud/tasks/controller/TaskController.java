@@ -42,4 +42,9 @@ public class TaskController {
     public void createTask(TaskDto taskDto){
 
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "getTaskId")
+    public List<TaskDto> getTaskId(){
+        return taskMapper.mapToTaskDtoList(service.getTaskById(1L));
+    }
 }
