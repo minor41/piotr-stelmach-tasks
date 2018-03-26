@@ -5,6 +5,7 @@ import com.crud.tasks.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +30,8 @@ public class DbService {
         return repository.findById(id);
     }
 
-    public Task deleteTask(final Long id){
-        return repository.deleteById(id);
+    public List<Task> deleteTask(final Long id){
+        repository.deleteById(id);
+        return new ArrayList<>();
     }
 }

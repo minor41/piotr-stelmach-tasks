@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -35,8 +36,9 @@ public class TaskController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask")
-    public void deleteTask(@RequestParam Long taskId) {
-        taskMapper.mapToTaskDto(service.deleteTask(taskId));
+    public List<TaskDto> deleteTask(@RequestParam Long taskId) {
+        return taskMapper.mapToTaskDtoList(service.deleteTask(taskId));
+
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
