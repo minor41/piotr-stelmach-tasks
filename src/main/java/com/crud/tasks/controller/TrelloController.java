@@ -35,7 +35,9 @@ public class TrelloController {
         // GET request
         List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
 
-        trelloBoards.forEach(trelloBoardDto -> {
+        trelloBoards.stream()
+        .filter(s -> s.getName().contains("Kodilla"))
+        .forEach(trelloBoardDto -> {
 
             System.out.println(trelloBoardDto.getName() + " - " + trelloBoardDto.getId());
 
