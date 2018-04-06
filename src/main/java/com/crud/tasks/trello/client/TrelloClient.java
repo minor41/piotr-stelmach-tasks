@@ -44,7 +44,6 @@ public class TrelloClient {
 
         return Arrays.asList(Optional.ofNullable(boardResponse)
                 .orElse(new TrelloBoardDto[0]));
-             // .ifPresent(System.out::println);
     }
 
     private URI urlBuilder(final String trelloApiEndpoint, final String trelloAppKey,
