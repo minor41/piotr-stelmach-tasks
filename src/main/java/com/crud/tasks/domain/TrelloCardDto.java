@@ -1,10 +1,10 @@
 package com.crud.tasks.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 
-@AllArgsConstructor
-@Getter
+@Data
 public class TrelloCardDto {
 
     private String name;
@@ -12,6 +12,4 @@ public class TrelloCardDto {
     private String pos;
     private String listId;
 
-    public TrelloCardDto() {
-    }
 }
