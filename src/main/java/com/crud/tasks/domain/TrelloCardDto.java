@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 
-@Data
+
+@AllArgsConstructor
+@Getter
 public class TrelloCardDto {
 
     private String name;
@@ -12,4 +14,6 @@ public class TrelloCardDto {
     private String pos;
     private String listId;
 
+    public TrelloCardDto() {
+    }
 }
