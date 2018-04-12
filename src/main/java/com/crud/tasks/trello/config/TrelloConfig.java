@@ -1,14 +1,11 @@
 package com.crud.tasks.trello.config;
 
-import com.crud.tasks.trello.client.TrelloClient;
 import lombok.Getter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 @Getter
-@Configuration
+@Component
 public class TrelloConfig {
 
     @Value("${trello.api.endpoint.prod}")
@@ -22,4 +19,6 @@ public class TrelloConfig {
 
     @Value("${trello.app.username}")
     private String trelloUsername;
+
+
 }
