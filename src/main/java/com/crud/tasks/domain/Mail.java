@@ -9,6 +9,6 @@ public class Mail {
     private String mailTo;
     private String subject;
     private String message;
-   // private String Cc;
+    private String Cc;
 
 }
