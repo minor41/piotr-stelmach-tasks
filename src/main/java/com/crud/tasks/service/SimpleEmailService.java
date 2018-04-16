@@ -36,7 +36,7 @@ public class SimpleEmailService {
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
-        if (mail.getCc() != "" && mail.getCc() != null) {
+        if (!mail.getCc().isEmpty()) {
             mailMessage.setCc(mail.getCc());
         }
         return mailMessage;
