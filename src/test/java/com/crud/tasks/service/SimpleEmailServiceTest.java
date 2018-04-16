@@ -26,13 +26,13 @@ public class SimpleEmailServiceTest {
     public void shouldSendEmail() {
 
         //Given
-        Mail mail = new Mail("test@test.com", "Test", "Test message", "" );
+        Mail mail = new Mail("test@test.com", "Test", "Test message" );
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
-        mailMessage.setCc(mail.getCc());
+ //       mailMessage.setCc(mail.getCc());
 
         //When
         simpleEmailService.send(mail);
