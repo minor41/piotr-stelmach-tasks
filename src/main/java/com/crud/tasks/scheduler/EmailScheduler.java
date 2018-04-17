@@ -35,13 +35,13 @@ public class EmailScheduler {
         ));
     }
 
-    private String createMessage(long datebaseSize) {
+    private String createMessage(long databaseSize) {
         String message;
-        if (datebaseSize == 1L) {
-            message = "Currently in database you got: " + datebaseSize + " task" + "\n" +
+        if (databaseSize == 1L) {
+            message = "Currently in database you got: " + databaseSize + " task" + "\n" +
                     "Have a nice day!";
         } else {
-            message = "Currently in database you got: " + datebaseSize + " tasks" + "\n" +
+            message = "Currently in database you got: " + databaseSize + " tasks" + "\n" +
                     "Have a nice day!";
         }
         return message;
