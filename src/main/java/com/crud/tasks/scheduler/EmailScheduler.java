@@ -22,8 +22,8 @@ public class EmailScheduler {
     @Autowired
     private AdminConfig adminConfig;
 
-    @Scheduled(cron = "0 0 10 * * *")
-    //@Scheduled(fixedDelay = 10000)
+    //@Scheduled(cron = "0 0 10 * * *")
+    @Scheduled(fixedDelay = 10000)
     public void sendInformationEmail() {
 
         long size = taskRepository.count();
@@ -38,11 +38,14 @@ public class EmailScheduler {
     private String createMessage(long datebaseSize) {
         String message;
         if (datebaseSize == 0L){
-            message = "Currently in database you got: " + datebaseSize + " tasks";
+            message = "Currently in database you got: " + datebaseSize + " tasks" + "\n" +
+                    "Have a nice day!";
         } if(datebaseSize == 1L){
-            message = "Currently in database you got: " + datebaseSize + " task";
+            message = "Currently in database you got: " + datebaseSize + " task" + "\n" +
+                    "Have a nice day!";
         }else {
-            message = "Currently in database you got: " + datebaseSize  + " tasks";
+            message = "Currently in database you got: " + datebaseSize  + " tasks" + "\n" +
+            "Have a nice day!";
         }
         return message;
     }
