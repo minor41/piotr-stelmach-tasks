@@ -1,18 +1,13 @@
 package com.crud.tasks.trello.facade;
 
-import com.crud.tasks.domain.CreatedTrelloCardDto;
-import com.crud.tasks.domain.TrelloBoard;
-import com.crud.tasks.domain.TrelloBoardDto;
-import com.crud.tasks.domain.TrelloCardDto;
+import com.crud.tasks.domain.*;
 import com.crud.tasks.mapper.TrelloMapper;
 import com.crud.tasks.service.TrelloService;
+import com.crud.tasks.trello.validator.TrelloValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
-import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
-import static java.util.stream.Collectors.toList;
 
 @Component
 public class TrelloFacade {
@@ -23,17 +18,19 @@ public class TrelloFacade {
     @Autowired
     private TrelloMapper trelloMapper;
 
-    public List<TrelloBoardDto> fetchTrelloBoards(){
-        List<TrelloBoard> trelloBoards = trelloMapper.mapToBoard(trelloService.fetchTrelloBoards());
-        LOGGER.info("Starting filtering boards...");
-        List<TrelloBoard> filteredBoards = trelloBoards.stream()
-                .filter(trelloBoard -> !trelloBoard.getName().equalsIgnoreCase("test"))
-                .collect(toList());
-        LOGGER.info("Boards have been filtered. Current list size: " + filteredBoards.size());
-        return trelloMapper.mapToBoardDto(filteredBoards);
+    @Autowired
+    private TrelloValidator trelloValidator;
+
+    public List<TrelloBoardDto> fetchTrelloBoards() {
+        List<TrelloBoard> trelloBoards = trelloMapper.mapToBoards(trelloService.fetchTrelloBoards());
+        List<TrelloBoard> filteredBoards = trelloValidator.validateTrelloBoard(trelloBoards);
+        return trelloMapper.mapToBoardsDto(filteredBoards);
     }
 
-    public CreatedTrelloCardDto createCard(final TrelloCardDto trelloCardDto){
+    public CreatedTrelloCardDto createCard(final TrelloCardDto trelloCardDto) {
 
+        TrelloCard trelloCard = trelloMapper.mapToCard(trelloCardDto);
+        trelloValidator.validateCard(trelloCard);
+        return trelloService.createdTrelloCard(trelloMapper.mapToCardDto(trelloCard));
     }
 }
