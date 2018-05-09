@@ -10,6 +10,6 @@ public class TaskDto {
     private String title;
     private String content;
 
-    private TaskDto() {
+    public TaskDto() {
     }
 }
