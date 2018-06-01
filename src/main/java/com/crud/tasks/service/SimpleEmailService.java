@@ -41,20 +41,17 @@ public class SimpleEmailService {
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
             messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
-            if (mail.getCc() != null && !mail.getCc().isEmpty()) {
-                messageHelper.setCc(mail.getCc());
-            }
         };
     }
 
-    private SimpleMailMessage createMailMessage(final Mail mail) {
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(mail.getMailTo());
-        mailMessage.setSubject(mail.getSubject());
-        mailMessage.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()));
-        if (mail.getCc() != null && !mail.getCc().isEmpty()) {
-            mailMessage.setCc(mail.getCc());
-        }
-        return mailMessage;
-    }
+  private SimpleMailMessage createMailMessage(final Mail mail) {
+      SimpleMailMessage mailMessage = new SimpleMailMessage();
+      mailMessage.setTo(mail.getMailTo());
+      mailMessage.setSubject(mail.getSubject());
+      mailMessage.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()));
+      if (mail.getCc() != null && !mail.getCc().isEmpty()) {
+          mailMessage.setCc(mail.getCc());
+      }
+      return mailMessage;
+  }
 }
